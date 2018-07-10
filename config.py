@@ -67,6 +67,13 @@ keys = [
     
     Key([mod, "shift"], "f", lazy.spawn("firefox")), 
     Key([mod], "r", lazy.spawncmd()),
+
+    #Special Keys
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 2%+")),
+    Key([], 'XF86AudioLowerVolume', lazy.spawn('amixer -q set Master 2%-')),
+    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 10%")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 10%"))
 ]
 
 groups = [Group(i) for i in "123456"]
@@ -113,6 +120,7 @@ screens = [
                 widget.Battery(),
                 widget.sep.Sep(foreground='7b5830'), #add separator bars where deemed necessary
                 widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
+                widget.sep.Sep(foreground='7b5830'), #add separator bars where deemed necessary
             ],
             24,
         ),
