@@ -103,24 +103,28 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Wallpaper(background='000000', foreground='FF6600'),
+                widget.Wallpaper(directory='/home/jlain/Pictures/wallpapers/'),
                 widget.GroupBox(),
-                widget.Prompt(),
                 widget.WindowName(),
                 widget.CPUGraph(),
                 widget.MemoryGraph(fill_color='e99814', graph_color='e99814'),
                 widget.sep.Sep(foreground='7b5830'), #add separator bars where deemed necessary
                 widget.CurrentLayoutIcon(),
                 widget.sep.Sep(foreground='7b5830'), #add separator bars where deemed necessary
-                # widget.TextBox("default config", name="default")
+                widget.Volume(emoji=True),
                 widget.Volume(),
                 widget.sep.Sep(foreground='7b5830'),
+#                widget.Wlan(),
                 widget.sep.Sep(foreground='7b5830'),
                 widget.BatteryIcon(),
                 widget.Battery(),
                 widget.sep.Sep(foreground='7b5830'), #add separator bars where deemed necessary
                 widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
                 widget.sep.Sep(foreground='7b5830'), #add separator bars where deemed necessary
+                widget.LaunchBar(progs=[
+                    ('firefox', 'firefox', 'inicio de firefox'),
+                    ('poweroff', 'systemctl poweroff', 'Poweroff')
+                    ], default_icon='/usr/share/icons/Adwaita/24x24/actions/system-shutdown.png'),
             ],
             24,
         ),
@@ -160,11 +164,5 @@ floating_layout = layout.Floating(float_rules=[
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
-
-# Set Wallpaper
-import subprocess
-subprocess.call(['xsetroot',
-                  '-cursor_name', 'left_prt',
-                  '-solid', '#000000'])
 
 wmname = "LG3D"
